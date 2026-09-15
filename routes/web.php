@@ -38,9 +38,11 @@ Route::post('/request-submit', [ItemRequestController::class, 'store'])->name('r
 
 Route::get('/request-confirmation/{referenceCode}', [ItemRequestController::class, 'success'])->name('request.success');
 
-// Authentication Routes
+// Authentication Routes (Login & Customer Registration)
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
+Route::get('/register', [LoginController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [LoginController::class, 'register']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Admin Panel Routes

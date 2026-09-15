@@ -7,6 +7,7 @@ use App\Models\ItemRequest;
 use App\Models\ItemRequestDetail;
 use App\Mail\CompanyItemRequestMail;
 use App\Mail\CustomerConfirmationMail;
+use App\Services\InstagramNotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -43,6 +44,7 @@ class ItemRequestController extends Controller
             'customer_name' => 'required|string|max:191',
             'customer_email' => 'required|email|max:191',
             'customer_phone' => 'required|string|max:50',
+            'instagram_handle' => 'nullable|string|max:191',
             'company_name' => 'nullable|string|max:191',
             'delivery_address' => 'required|string|max:1000',
             'notes' => 'nullable|string|max:2000',
@@ -62,9 +64,10 @@ class ItemRequestController extends Controller
             'customer_name' => $validated['customer_name'],
             'customer_email' => $validated['customer_email'],
             'customer_phone' => $validated['customer_phone'],
-            'company_name' => $validated['company_name'],
+            'instagram_handle' => $validated['instagram_handle'] ?? null,
+            'company_name' => $validated['company_name'] ?? null,
             'delivery_address' => $validated['delivery_address'],
-            'notes' => $validated['notes'],
+            'notes' => $validated['notes'] ?? null,
             'total_estimated_value' => $totalEstimated,
             'status' => 'new',
             'email_sent_at' => now(),
@@ -82,14 +85,20 @@ class ItemRequestController extends Controller
             ]);
         }
 
-        // Send Email to Company & Customer
+        // 1. Send Email Notification to Company & Customer
         $companyEmail = config('mail.company_email', env('COMPANY_NOTIFICATION_EMAIL', 'atelier@voguevelvet.com'));
         try {
             Mail::to($companyEmail)->send(new CompanyItemRequestMail($itemRequest));
             Mail::to($itemRequest->customer_email)->send(new CustomerConfirmationMail($itemRequest));
         } catch (\Exception $e) {
-            // Log mail exception if offline, order is still saved cleanly
             \Log::error('Item Request Email dispatch error: ' . $e->getMessage());
+        }
+
+        // 2. Dispatch Instagram DM Notification
+        try {
+            InstagramNotificationService::sendRequestNotification($itemRequest);
+        } catch (\Exception $e) {
+            \Log::error('Instagram DM dispatch error: ' . $e->getMessage());
         }
 
         // Clear request basket

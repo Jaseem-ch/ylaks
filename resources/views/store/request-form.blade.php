@@ -5,7 +5,7 @@
 @section('content')
 <div class="container" style="padding:40px 0; max-width:960px;">
     <h1 style="font-size:2.2rem; font-weight:700; color:var(--secondary); font-family:var(--font-heading); margin-bottom:8px;">Send Dress Inquiry to Atelier</h1>
-    <p style="color:var(--text-muted); margin-bottom:36px;">Provide your contact details, preferred dress sizes (XS, S, M, L, XL), or custom measurements. Our head stylist will verify availability and confirm your order reservation by email.</p>
+    <p style="color:var(--text-muted); margin-bottom:36px;">Provide your contact details, Instagram handle, and preferred dress sizes. Our head stylist will verify availability and confirm your order via email &amp; Instagram DM!</p>
 
     <div style="display:grid; grid-template-columns:1fr 340px; gap:36px;">
         <!-- Form Section -->
@@ -36,9 +36,17 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label">Boutique / Organization Name (Optional)</label>
-                    <input type="text" name="company_name" value="{{ old('company_name', auth()->user()->company_name ?? '') }}" class="form-control" placeholder="e.g. Laurent Fashion Atelier">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                    <div class="form-group">
+                        <label class="form-label">Instagram Handle (for DM updates)</label>
+                        <div style="position:relative;">
+                            <input type="text" name="instagram_handle" value="{{ old('instagram_handle') }}" class="form-control" placeholder="@sophia_laurent">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Boutique / Organization (Optional)</label>
+                        <input type="text" name="company_name" value="{{ old('company_name', auth()->user()->company_name ?? '') }}" class="form-control" placeholder="e.g. Laurent Fashion Atelier">
+                    </div>
                 </div>
 
                 <h3 style="font-size:1.2rem; font-weight:700; color:var(--secondary); font-family:var(--font-heading); margin-top:32px; margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:10px;">

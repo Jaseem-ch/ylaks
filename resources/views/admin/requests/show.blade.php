@@ -29,6 +29,9 @@
                     <div style="font-weight:700; font-size:1rem; color:var(--secondary); margin-top:2px;">{{ $itemRequest->customer_name }}</div>
                     <div style="font-size:0.85rem; color:var(--text-muted);"><a href="mailto:{{ $itemRequest->customer_email }}">{{ $itemRequest->customer_email }}</a></div>
                     <div style="font-size:0.85rem; color:var(--text-muted);">Phone: {{ $itemRequest->customer_phone }}</div>
+                    <div style="font-size:0.85rem; color:var(--primary); font-weight:700; margin-top:4px;">
+                        Instagram: {{ $itemRequest->instagram_handle ? '@' . ltrim($itemRequest->instagram_handle, '@') : 'Not Provided' }}
+                    </div>
                 </div>
 
                 <div>
@@ -111,6 +114,7 @@
 
             <div style="border-top:1px solid var(--border); margin-top:20px; padding-top:16px; font-size:0.8rem; color:var(--text-muted);">
                 <div>Email Dispatched: {{ $itemRequest->email_sent_at ? $itemRequest->email_sent_at->format('M d, Y H:i') : 'Pending' }}</div>
+                <div style="margin-top:4px;">Instagram Dispatched: {{ $itemRequest->instagram_sent_at ? $itemRequest->instagram_sent_at->format('M d, Y H:i') : 'Pending' }}</div>
                 <div style="margin-top:4px;">Request Received: {{ $itemRequest->created_at->format('M d, Y H:i') }}</div>
             </div>
         </div>

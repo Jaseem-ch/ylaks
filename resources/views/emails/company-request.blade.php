@@ -30,6 +30,9 @@
             <p style="margin: 0 0 8px;"><strong>Customer Name:</strong> {{ $itemRequest->customer_name }}</p>
             <p style="margin: 0 0 8px;"><strong>Email:</strong> {{ $itemRequest->customer_email }}</p>
             <p style="margin: 0 0 8px;"><strong>Phone:</strong> {{ $itemRequest->customer_phone }}</p>
+            @if($itemRequest->instagram_handle)
+                <p style="margin: 0 0 8px;"><strong>Instagram Handle:</strong> <span style="color: #e11d48; font-weight: bold;">{{ '@' . ltrim($itemRequest->instagram_handle, '@') }}</span></p>
+            @endif
             @if($itemRequest->company_name)
                 <p style="margin: 0 0 8px;"><strong>Boutique/Org:</strong> {{ $itemRequest->company_name }}</p>
             @endif

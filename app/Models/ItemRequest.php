@@ -15,6 +15,7 @@ class ItemRequest extends Model
         'customer_name',
         'customer_email',
         'customer_phone',
+        'instagram_handle',
         'company_name',
         'delivery_address',
         'notes',
@@ -22,11 +23,13 @@ class ItemRequest extends Model
         'status',
         'admin_notes',
         'email_sent_at',
+        'instagram_sent_at',
     ];
 
     protected $casts = [
         'total_estimated_value' => 'decimal:2',
         'email_sent_at' => 'datetime',
+        'instagram_sent_at' => 'datetime',
     ];
 
     public function user()

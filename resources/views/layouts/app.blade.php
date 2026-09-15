@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Vogue & Velvet') - Luxury Ladies Dresses & Haute Couture</title>
-    <meta name="description" content="Vogue & Velvet Luxury Couture - Exclusive evening gowns, cocktail dresses, summer midis, and bespoke dress reservations.">
+    <title>@yield('title', 'YLAKS') - Luxury Ladies Dresses & Haute Couture</title>
+    <meta name="description" content="YLAKS Luxury Couture - Exclusive evening gowns, cocktail dresses, summer midis, and bespoke dress reservations.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,12 +18,8 @@
     <!-- Main Navigation Header -->
     <header class="navbar">
         <div class="container nav-container">
-            <a href="{{ route('home') }}" class="brand-logo">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
-                Vogue & Velvet
-                <span class="brand-badge">Atelier</span>
+            <a href="{{ route('home') }}" class="brand-logo" style="display:flex; align-items:center; gap:12px;">
+                <img src="{{ asset('images/logo.svg') }}" alt="YLAKS Logo" style="height:80px; max-width:220px; object-fit:contain;">
             </a>
 
             <nav>
@@ -54,10 +50,10 @@
                     @endif
                     <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                         @csrf
-                        <button type="submit" class="btn btn-outline btn-sm" style="color:var(--text-main); border-color:var(--border);">Sign Out</button>
+                        <button type="submit" class="cart-btn">Sign Out</button>
                     </form>
                 @else
-                    <a href="{{ route('login') }}" class="btn btn-outline btn-sm" style="color:var(--text-main); border-color:var(--border);">Atelier Login</a>
+                    <a href="{{ route('login') }}" class="cart-btn"><span>Sign In / Register</span></a>
                 @endauth
             </div>
         </div>
@@ -96,7 +92,9 @@
     <footer>
         <div class="container footer-grid">
             <div>
-                <div class="footer-brand">Vogue & Velvet</div>
+                <div class="footer-brand" style="margin-bottom:14px;">
+                    <img src="{{ asset('images/logo.svg') }}" alt="YLAKS Logo" style="height:80px; filter:brightness(0) invert(1);">
+                </div>
                 <p style="font-size:0.9rem; line-height:1.7; color:#a8a29e;">Exclusive haute couture ladies dresses, red carpet gala gowns, and bespoke silk midis. Select your favorite dresses and submit your request directly to our atelier stylists.</p>
             </div>
             <div>
@@ -123,7 +121,7 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                &copy; {{ date('Y') }} Vogue & Velvet Luxury Couture. All rights reserved.
+                &copy; {{ date('Y') }} YLAKS Luxury Couture. All rights reserved.
             </div>
         </div>
     </footer>

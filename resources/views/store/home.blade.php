@@ -3,15 +3,13 @@
 @section('title', 'Exclusive Ladies Dresses & Couture')
 
 @section('content')
-<!-- Hero Section -->
+<!-- Boutique Hero Banner Section with Background Image & Prominent Logo Card -->
 <section class="hero">
     <div class="container hero-grid">
         <div>
-            <span class="badge badge-primary" style="margin-bottom:18px; font-size:0.85rem; background:rgba(225,29,72,0.25); color:#fecdd3; border:1px solid rgba(254,205,211,0.3); font-family:var(--font-body);">
-                New Collection 2026
-            </span>
+            
             <h1 class="hero-title">Timeless Elegance. Crafted for Extraordinary Moments.</h1>
-            <p class="hero-subtitle">Discover handcrafted evening gowns, luxury silk slip dresses, and bespoke midi silhouettes. Select your favorite dresses and send your inquiry straight to our head atelier.</p>
+            <p class="hero-subtitle">Discover handcrafted kurta sets and co-ord sets . Select your favorite dresses and send your inquiry straight to our head atelier stylists.</p>
             <div class="hero-actions">
                 <a href="{{ route('catalog.index') }}" class="btn btn-primary">
                     Explore Dress Collection
@@ -22,68 +20,22 @@
                 </a>
             </div>
         </div>
-        <div style="text-align:center; position:relative;">
-            <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&auto=format&fit=crop" alt="Luxury Evening Gown" style="width:100%; max-width:440px; height:500px; object-fit:cover; border-radius:var(--radius-lg); box-shadow:var(--shadow-glow); border:2px solid rgba(255,255,255,0.2);">
-        </div>
-    </div>
-</section>
 
-<!-- Boutique Value Propositions -->
-<section style="background:white; padding:48px 0; border-bottom:1px solid var(--border);">
-    <div class="container" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:32px;">
-        <div style="display:flex; gap:16px; align-items:flex-start;">
-            <div style="background:var(--primary-light); color:var(--primary); padding:14px; border-radius:50%;">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-            </div>
-            <div>
-                <h4 style="font-weight:700; color:var(--secondary); font-family:var(--font-heading); font-size:1.1rem;">Bespoke Sizing</h4>
-                <p style="font-size:0.875rem; color:var(--text-muted);">Custom fitting & custom sizing requests handled directly by our stylists.</p>
-            </div>
-        </div>
-        <div style="display:flex; gap:16px; align-items:flex-start;">
-            <div style="background:var(--primary-light); color:var(--primary); padding:14px; border-radius:50%;">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-            </div>
-            <div>
-                <h4 style="font-weight:700; color:var(--secondary); font-family:var(--font-heading); font-size:1.1rem;">Direct Email Consultation</h4>
-                <p style="font-size:0.875rem; color:var(--text-muted);">Selected dress lists emailed instantly to our fashion atelier for availability.</p>
-            </div>
-        </div>
-        <div style="display:flex; gap:16px; align-items:flex-start;">
-            <div style="background:var(--primary-light); color:var(--primary); padding:14px; border-radius:50%;">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-            </div>
-            <div>
-                <h4 style="font-weight:700; color:var(--secondary); font-family:var(--font-heading); font-size:1.1rem;">Haute Couture Fabrics</h4>
-                <p style="font-size:0.875rem; color:var(--text-muted);">100% Mulberry silk, French chiffon, and European velvet textiles.</p>
+        <!-- Prominent Logo Card in Front of Background Banner -->
+        <div style="text-align:center;">
+            <div class="hero-logo-card">
+                <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.7); margin-bottom:12px; font-weight:600;">
+                    Official Atelier Brand
+                </div>
+                <img src="{{ asset('images/logo.svg') }}" alt="Vogue & Velvet Brand Logo" class="hero-logo-img">
+                <div style="margin-top:20px; font-size:0.875rem; color:#e7e5e4; font-weight:300; line-height:1.5;">
+                    Luxury Couture &bull; Custom Fit Reservations &bull; Express Stylist Dispatch
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Featured Dress Categories -->
-<section style="padding:70px 0;">
-    <div class="container">
-        <h2 class="section-title">Explore Collections</h2>
-        <p class="section-desc">Find the perfect dress silhouette for your occasion.</p>
-
-        <div class="grid-4">
-            @foreach($featuredCategories as $category)
-                <a href="{{ route('catalog.index', ['category' => $category->slug]) }}" style="text-decoration:none;">
-                    <div class="product-card" style="height:100%;">
-                        <div class="product-image-wrap" style="height:260px;">
-                            <img src="{{ $category->image }}" alt="{{ $category->name }}" class="product-image">
-                        </div>
-                        <div class="product-body" style="padding:18px;">
-                            <h3 style="font-size:1.2rem; font-weight:700; color:var(--secondary); margin-bottom:6px;">{{ $category->name }}</h3>
-                            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5;">{{ Str::limit($category->description, 75) }}</p>
-                        </div>
-                    </div>
-                </a>
-            @endforeach
-        </div>
-    </div>
-</section>
 
 <!-- Featured Dresses Grid -->
 <section style="padding:70px 0; background:white; border-top:1px solid var(--border);">
@@ -91,7 +43,7 @@
         <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:36px;">
             <div>
                 <h2 class="section-title">Curated Dress Highlights</h2>
-                <p class="section-desc" style="margin-bottom:0;">Hand-picked gowns and cocktail dresses available for order reservations.</p>
+                <p class="section-desc" style="margin-bottom:0;">Hand-picked kurta sets and co-ord sets available for order reservations.</p>
             </div>
             <a href="{{ route('catalog.index') }}" class="btn btn-outline" style="color:var(--primary); border-color:var(--primary);">
                 View Full Collection

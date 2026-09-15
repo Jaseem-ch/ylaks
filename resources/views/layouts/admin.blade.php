@@ -14,8 +14,7 @@
         <aside class="admin-sidebar">
             <div class="admin-brand">
                 <a href="{{ route('admin.dashboard') }}" style="color:white; text-decoration:none; display:flex; align-items:center; gap:8px;">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--primary);"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                    Vogue Admin
+                    <img src="{{ asset('images/logo.svg') }}" alt="Vogue & Velvet Logo" style="height:38px; filter:brightness(0) invert(1);">
                 </a>
             </div>
 
